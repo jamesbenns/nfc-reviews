@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="{{color}}">
     <title>{{name}}</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
@@ -323,6 +324,9 @@ table {
         }
         $.post("/add/review",body,function(data){
             console.log(data);
+            for(var i = 0; i < data.length; i++){
+                var review = "<div><p>" + data[i]. ""
+            }
             $(".overlay").css("display", "block")
         });
 
