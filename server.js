@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
-    mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
+    mongoURL = "mongodb://nfcreviews:nfc123@ds151228.mlab.com:51228/nfc-reviews" || process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
     mongoURLLabel = "";
 
 if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
@@ -43,6 +43,7 @@ var initDb = function(callback) {
   if (mongodb == null) return;
 
   mongodb.connect(mongoURL, function(err, conn) {
+
     if (err) {
       callback(err);
       return;
