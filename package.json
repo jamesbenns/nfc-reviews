@@ -1,0 +1,26 @@
+{
+  "name": "nfc-reviews",
+  "version": "1.0.0",
+  "description": "Review app with support for NFC enabled devices.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamesbenns/nfc-reviews.git"
+  },
+  "author": "James Benns",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamesbenns/nfc-reviews/issues"
+  },
+  "homepage": "https://github.com/jamesbenns/nfc-reviews#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "handlebars": "^4.0.6",
+    "mongodb": "^2.2.16"
+  }
+}

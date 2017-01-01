@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{name}}</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
+
+  <!-- Compiled and minified CSS -->
+
+  <!-- Compiled and minified JavaScript -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+<style>
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+*{
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+input, textarea{
+    outline: none;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+    body{
+        background-attachment: fixed;
+    }
+
+    .top{
+        text-align: center;
+        padding: 50px;
+    }
+    .top img{
+        max-width: 100%;
+        max-height: 130px;
+    }
+    .container{
+        padding: 0px 15px;
+    }
+    .form{
+        border: 1px solid #a2a2a2;
+        background: #fff;
+        position: relative;
+    }
+    .rating{
+        text-align: center;
+        padding: 0px 12px;
+    }
+    .review{
+        width: 100%;
+        padding: 30px 15px 15px 15px;
+        resize: none;
+        font-size: 15px;
+        border-width: 0px;
+        height: 200px;
+        border-bottom: 1px solid #a1a1a1;
+        display: block;
+    }
+    .star{
+        position: absolute;
+        background: #eee;
+        color: #fff;
+        top: 3px;
+        bottom: 3px;
+        left: 3px;
+        right: 3px;
+    }
+    .star i{
+        position: absolute;
+        font-size: 48px;
+        top: 50%;
+        left: 50%;
+        margin-left: -24px;
+        margin-top: -24px;
+        transition: all 0.5s;
+    }
+    .button{
+        width: 100%;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        background: {{color}};
+        border: none;
+        color: #fff;
+        text-transform: uppercase;
+        padding: 0px;
+        margin-bottom: 15px;
+    }
+    .selected .star{
+        color: {{color}};
+    }
+    .current .star i{
+        animation: spin 0.5s;
+    }
+    .staff{
+        height: 90px;
+        position: relative;
+        border-bottom: 1px solid #fff;
+    }
+    .staff:last-child{
+        border: none;
+    }
+    .pic{
+        position: absolute;
+        left: 0px;
+        top: 10px;
+        width: 70px;
+        height: 70px;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-position: center center;
+        border-radius: 100px;    
+    }
+    .details{
+        position: absolute;
+        right: 0px;
+        top: 10px;
+        left: 85px;
+    }
+    .star-container{
+        width: 20%;
+        display: inline-block;
+        float: left;
+        position: relative;
+    }
+    .aspect-fix{
+        padding-top: 100%;
+    }
+    .title{
+        padding: 15px;
+        font-size: 12px;
+        text-transform: uppercase;
+        margin-bottom: 1px;
+        margin-top: 3px;
+        background: #eee;
+    }
+    .content{
+        background: #eee;
+        margin-bottom: 6px;
+        padding: 15px;
+        font-size: 15px;
+    }
+    textarea{
+        width: 100%;
+        border: none;
+        resize: vertical;
+        height: 100px;
+        display: block;
+    }
+    .check{
+        position: absolute;
+        right: 0px;
+        opacity: 0;
+        transition: all 0.5s;
+        font-size: 48px;
+        top: 50%;
+        margin-top: -24px;
+        color: {{color}};
+    }
+    .staff.checked .check{ 
+        opacity: 1;
+    }
+    .check i{
+        font-size: 48px;
+    }
+    .overlay{
+        position: fixed;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        background: #000;
+        text-align: center;
+        color: #fff;
+        font-size: 30px;
+        padding-top: 250px;
+        display: none;
+    }
+
+@-webkit-keyframes spin {
+  0%   { }
+  100% { transform: rotate(360deg) }
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="top">
+    <img src="{{img}}"/>
+</div>
+
+<div class="rating">
+    <div class="star-container">
+        <div class="aspect-fix"></div>
+        <div class="star">
+            <i class="material-icons symbol">&#xE838;</i>
+        </div>
+    </div><div id="2" class="star-container">
+        <div class="aspect-fix"></div>
+        <div class="star">
+            <i class="material-icons symbol">&#xE838;</i>
+        </div>
+    </div><div id="3" class="star-container">
+        <div class="aspect-fix"></div>
+        <div class="star">
+            <i class="material-icons symbol">&#xE838;</i>
+        </div>
+    </div><div id="4" class="star-container">
+        <div class="aspect-fix"></div>
+        <div class="star">
+            <i class="material-icons symbol">&#xE838;</i>
+        </div>
+    </div><div id="5" class="star-container">
+        <div class="aspect-fix"></div>
+        <div class="star">
+            <i class="material-icons symbol">&#xE838;</i>
+        </div>
+    </div>
+</div>
+
+<div style="clear: both;"></div>
+<div class="container">
+    <div class="title">Your Review</div>
+    <textarea class="content" id="review" placeholder="Type here..."></textarea>
+    <input type="hidden" id="company" value="{{username}}"/>
+    <div class="title">Tag Employees</div>
+    <div class="content" style="padding: 0px 15px;">
+        {{#each staff}}
+        <div class="staff" id="{{username}}">
+            <div class="pic" style="background-image: url({{pic}})"></div>
+            <div class="details">{{firstName}} {{lastName}}<br>{{position}}</div>
+            <div class="check"><i class="material-icons">&#xE876;</i></div>
+        </div>
+        {{/each}}
+    </div>
+    <button class="button" onclick="send()">Send</button>
+</div>
+
+<div class="overlay">
+    Thanks!!! Here's what some others said about {{name}}'
+</div>
+
+<script>
+    var rating = 0;
+
+    $('.star-container').click(function(){
+        rating = this.id;
+        $(this).addClass('selected current');
+        $(this).prevAll().addClass('selected').removeClass('current');
+        $(this).nextAll().removeClass('selected current');
+        console.log(rating);
+    })
+
+    var staff = [];
+
+    $('.staff').click(function(){
+        var username = this.id;
+        var i = staff.indexOf(username);
+        console.log(username + " " + i);
+        if(i !== -1){
+            staff.splice(i, 1);
+            $(this).removeClass('checked')
+        }else{
+            staff.push(this.id);
+            $(this).addClass('checked')
+        }
+        console.log(staff)
+    })
+
+    function send(){
+        var body = {
+            "company" : $('#company').val(),
+            "rating" : rating,
+            "review" : $('#review').val(),
+            "date" : Date.now(),
+            "staff" : staff
+        }
+        $.post("/add/review",body,function(data){
+            console.log(data);
+            $(".overlay").css("display", "block")
+        });
+
+    }
+</script>
+
+</body>
+</html>
